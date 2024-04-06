@@ -1,0 +1,17 @@
+### HOME
+GET http://localhost:3000
+
+### CREATE SONG
+POST http://localhost:3000/songs
+
+### FETCH ALL SONGS
+GET http://localhost:3000/songs
+
+### FETCH SINGLE SONG
+GET http://localhost:3000/songs/123
+
+### UPDATE SONG
+PUT http://localhost:3000/songs/123
+
+### DELETE SONG
+DELETE http://localhost:3000/songs/123
