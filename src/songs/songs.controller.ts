@@ -1,18 +1,14 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { SongsService } from './songs.service';
+import { CreateSongDTO } from './dto/create-song.dto';
 
 @Controller('songs')
 export class SongsController {
   constructor(private readonly songsService: SongsService) {}
 
   @Post()
-  create() {
-    const songExist = this.songsService.create({
-      title: 'Where are U now',
-      artist: 'Justin Bieber',
-      album: 'Where are U now',
-      year: 2016,
-    });
+  create(@Body() createSongDTO: CreateSongDTO) {
+    const songExist = this.songsService.create(createSongDTO);
 
     return { message: 'Song created successfully', songs: songExist };
   }

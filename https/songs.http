@@ -3,6 +3,15 @@ GET http://localhost:3000
 
 ### CREATE SONG
 POST http://localhost:3000/songs
+Content-Type: application/json
+
+{
+    "title": "Where are U now v2",
+    "artists": ["Justin Bieber", "Diplo"],
+    "album": "Where are U now v2",
+    "releasedDate": "2024-04-30",
+    "duration": "02:34"
+}
 
 ### FETCH ALL SONGS
 GET http://localhost:3000/songs
