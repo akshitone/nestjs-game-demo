@@ -7,30 +7,30 @@ export class SongsController {
   constructor(private readonly songsService: SongsService) {}
 
   @Post()
-  create(@Body() createSongDTO: CreateSongDTO) {
+  createSong(@Body() createSongDTO: CreateSongDTO) {
     const songExist = this.songsService.create(createSongDTO);
 
     return { message: 'Song created successfully', songs: songExist };
   }
 
   @Get()
-  findAll() {
+  findSongs() {
     const songsExist = this.songsService.findAll();
     return { message: 'Songs fetch successfully', songs: songsExist };
   }
 
   @Get('/:id')
-  findOne() {
+  findSong() {
     return { message: `This action return song based on id` };
   }
 
   @Put('/:id')
-  updateOne() {
+  updateSong() {
     return { message: `This action update song based on id` };
   }
 
   @Delete('/:id')
-  deleteOne() {
+  deleteSong() {
     return { message: `This action delete song based on id` };
   }
 }
