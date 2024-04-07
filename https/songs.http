@@ -14,7 +14,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/songs
 
 ### FETCH SINGLE SONG
-GET http://localhost:3000/api/songs/123
+GET http://localhost:3000/api/songs/04eec047-c16e-403c-ac75-4bf9670c5772
 
 ### UPDATE SONG
 PUT http://localhost:3000/api/songs/123

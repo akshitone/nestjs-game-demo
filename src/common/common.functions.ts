@@ -4,6 +4,13 @@ export const generatePublicId = () => {
   return uuidv4();
 };
 
+export const removeFields = (response: any, removeData: Array<string>) => {
+  for (const remove of removeData) {
+    delete response._doc[remove];
+  }
+  return response;
+};
+
 export function responseGenerators(
   responseData?: object | string,
   responseStatusCode?: number,

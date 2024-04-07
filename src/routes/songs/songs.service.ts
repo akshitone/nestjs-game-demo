@@ -15,4 +15,8 @@ export class SongsService {
   async findAll() {
     return await this.songModel.find();
   }
+
+  async findOne(songId: string) {
+    return await this.songModel.findOne({ songId });
+  }
 }
