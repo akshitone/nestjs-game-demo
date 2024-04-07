@@ -4,10 +4,10 @@ Content-Type: application/json
 
 {
     "title": "Where are U now",
-    "artists": ["Justin Bieber", "Diplo"],
+    "artists": ["Justin Bieber", "Diplo", "Skrillix"],
     "album": "Where are U now",
-    "releasedDate": "1712492194",
-    "duration": "02:34"
+    "releasedDate": "1712492200",
+    "duration": "02:54"
 }
 
 ### FETCH ALL SONGS

@@ -1,8 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { configDotenv } from 'dotenv';
-import { SongsModule } from './routes/songs/songs.module';
+import { SongsModule } from './modules/songs/songs.module';
 import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
-import { CustomersModule } from './routes/customers/customers.module';
+import { CustomersModule } from './modules/customers/customers.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
 configDotenv();
