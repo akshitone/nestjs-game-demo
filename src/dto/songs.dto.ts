@@ -13,9 +13,9 @@ export class CreateSongDTO {
   @IsNotEmpty()
   readonly album: string;
 
-  @IsDateString()
+  @IsString()
   @IsNotEmpty()
-  readonly releasedDate: Date;
+  readonly releasedDate: string;
 
   @IsMilitaryTime()
   @IsNotEmpty()

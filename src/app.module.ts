@@ -1,10 +1,14 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { configDotenv } from 'dotenv';
 import { SongsModule } from './routes/songs/songs.module';
 import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
 import { CustomersModule } from './routes/customers/customers.module';
+import { MongooseModule } from '@nestjs/mongoose';
+
+configDotenv();
 
 @Module({
-  imports: [SongsModule, CustomersModule],
+  imports: [MongooseModule.forRoot(process.env.DATABASE_CONNECTION_URL_PROD), SongsModule, CustomersModule],
   controllers: [],
   providers: [],
 })

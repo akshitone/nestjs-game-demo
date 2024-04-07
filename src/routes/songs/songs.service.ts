@@ -1,15 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { MODULES } from 'src/common/global.constants';
+import { ISong } from 'src/types/songs.type';
 
 @Injectable()
 export class SongsService {
-  private readonly songs = [];
+  constructor(@InjectModel(MODULES.SONG) private readonly songModel: Model<ISong>) {}
 
-  create(song: any) {
-    this.songs.push(song);
-    return song;
+  async create(song: ISong) {
+    return await this.songModel.create(song);
   }
 
-  findAll() {
-    return this.songs;
+  async findAll() {
+    return await this.songModel.find();
   }
 }

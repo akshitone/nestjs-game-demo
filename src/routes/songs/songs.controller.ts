@@ -3,7 +3,7 @@ import { SongsService } from './songs.service';
 import { CreateSongDTO } from '../../dto/songs.dto';
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { responseGenerators } from 'src/common/common.functions';
+import { generatePublicId, responseGenerators } from 'src/common/common.functions';
 import { SONGS } from 'src/common/global.constants';
 
 @Controller('songs')
@@ -11,15 +11,18 @@ export class SongsController {
   constructor(private readonly songsService: SongsService) {}
 
   @Post()
-  createSong(@Body() createSongDTO: CreateSongDTO) {
-    const songExist = this.songsService.create(createSongDTO);
+  async createSong(@Body() createSongDTO: CreateSongDTO) {
+    const songId = generatePublicId();
+    const { title, artists, album, releasedDate, duration } = createSongDTO;
 
-    return { message: 'Song created successfully', songs: songExist };
+    const songExist = await this.songsService.create({ songId, title, artists, album, releasedDate, duration });
+
+    return { message: 'Song created successfully', song: songExist };
   }
 
   @Get()
-  findSongs() {
-    const songsExist = this.songsService.findAll();
+  async findSongs() {
+    const songsExist = await this.songsService.findAll();
     return { message: 'Songs fetch successfully', songs: songsExist };
   }
 

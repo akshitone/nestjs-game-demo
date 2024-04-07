@@ -6,3 +6,9 @@ export const SONGS = {
   DELETED: 'Song deleted successfully',
   ERROR: 'Error while fetching songs',
 };
+
+export const MODULES = {
+  SONG: 'Song',
+  CUSTOMER: 'Customer',
+  USER: 'User',
+};
