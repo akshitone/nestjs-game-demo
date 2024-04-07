@@ -10,8 +10,9 @@ export class LoggerMiddleware implements NestMiddleware {
     IMP - API called path: ${req.path},
     method: ${req.method},
     query: ${JSON.stringify(req.query)},
+    body: ${JSON.stringify(req.body)},
     remote address (main/proxy ip):${ip},
-    reference: ${req.headers.referer} ,
+    reference: ${req.headers.referer},
     user-agent: ${req.headers['user-agent']}
     ------------ End ------------  `);
 
