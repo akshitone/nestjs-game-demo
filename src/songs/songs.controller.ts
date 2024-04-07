@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Next, Post, Put, Req, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Next, Param, ParseIntPipe, Post, Put, Req, Res } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { CreateSongDTO } from './dto/create-song.dto';
 import { NextFunction, Request, Response } from 'express';
@@ -24,9 +24,7 @@ export class SongsController {
   }
 
   @Get('/:id')
-  findSong(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
-    const { id } = req.params;
-
+  findSong(@Param('id', ParseIntPipe) id: number, @Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
     return res.status(StatusCodes.OK).send(responseGenerators({ id }, StatusCodes.OK, SONGS.FOUND, false));
   }
 

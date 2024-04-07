@@ -1,23 +1,23 @@
 ### CREATE SONG
-POST http://localhost:3000/songs
+POST http://localhost:3000/api/songs
 Content-Type: application/json
 
 {
-    "title": "Where are U now v2",
+    "title": "Where are U now",
     "artists": ["Justin Bieber", "Diplo"],
-    "album": "Where are U now v2",
+    "album": "Where are U now",
     "releasedDate": "2024-04-30",
     "duration": "02:34"
 }
 
 ### FETCH ALL SONGS
-GET http://localhost:3000/songs
+GET http://localhost:3000/api/songs
 
 ### FETCH SINGLE SONG
-GET http://localhost:3000/songs/123
+GET http://localhost:3000/api/songs/123
 
 ### UPDATE SONG
-PUT http://localhost:3000/songs/123
+PUT http://localhost:3000/api/songs/123
 
 ### DELETE SONG
-DELETE http://localhost:3000/songs/123
+DELETE http://localhost:3000/api/songs/123
