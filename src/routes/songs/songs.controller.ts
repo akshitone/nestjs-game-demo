@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Next, Param, ParseIntPipe, Post, Put, Req, Res } from '@nestjs/common';
 import { SongsService } from './songs.service';
-import { CreateSongDTO } from './dto/create-song.dto';
+import { CreateSongDTO } from '../../dto/songs.dto';
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { responseGenerators } from 'src/common/common.functions';
