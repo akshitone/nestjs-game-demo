@@ -7,6 +7,15 @@ export const SONGS = {
   ERROR: 'Error while fetching songs',
 };
 
+export const USERS = {
+  FOUND: 'User found successfully',
+  NOT_FOUND: 'User not found',
+  CREATED: 'User created successfully',
+  UPDATED: 'User updated successfully',
+  DELETED: 'User deleted successfully',
+  ERROR: 'Error while fetching users',
+};
+
 export const MODULES = {
   SONG: 'Song',
   CUSTOMER: 'Customer',

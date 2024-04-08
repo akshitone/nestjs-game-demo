@@ -1,7 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
+const bcrypt = require('bcrypt');
 
 export const generatePublicId = () => {
   return uuidv4();
+};
+
+export const generateHashPassword = (password: string) => {
+  const saltRounds = 10;
+  const salt = bcrypt.genSaltSync(saltRounds);
+  return bcrypt.hashSync(password, salt);
 };
 
 export const removeFields = (response: any, removeData: Array<string>) => {

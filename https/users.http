@@ -1,0 +1,17 @@
+### CREATE USER
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "firstName": "Akshit",
+    "lastName": "Mithaiwala",
+    "userName": "akshitone",
+    "password": "Abcd@1234",
+    "dateOfBirth": "1712492200"
+}
+
+### FETCH ALL USERS
+GET http://localhost:3000/api/users
+
+### FETCH SINGLE USER
+GET http://localhost:3000/api/users/ad2ac97c-a643-43b8-bf09-324d19041935

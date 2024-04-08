@@ -1,7 +1,7 @@
-import { Body, Controller, Delete, Get, Next, Param, ParseIntPipe, Post, Put, Req, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res } from '@nestjs/common';
 import { SongsService } from './songs.service';
-import { CreateSongDTO } from '../../dto/songs.dto';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
+import { SongCreateDTO } from '../../dto/songs.dto';
 import { StatusCodes } from 'http-status-codes';
 import { generatePublicId, removeFields, responseGenerators } from 'src/common/common.functions';
 import { SONGS } from 'src/common/global.constants';
@@ -11,13 +11,13 @@ export class SongsController {
   constructor(private readonly songsService: SongsService) {}
 
   @Post()
-  async createSong(@Body() createSongDTO: CreateSongDTO, @Res() res: Response) {
+  async createSong(@Body() songCreateDTO: SongCreateDTO, @Req() req: Request, @Res() res: Response) {
     const songId = generatePublicId();
-    const { title, artists, album, releasedDate, duration } = createSongDTO;
+    const { title, artists, album, releasedDate, duration } = songCreateDTO;
 
     const songExist = await this.songsService.create({ songId, title, artists, album, releasedDate, duration });
 
-    return res.status(StatusCodes.OK).send(responseGenerators(removeFields(songExist, ['_id', '__v']), StatusCodes.OK, SONGS.FOUND, false));
+    return res.status(StatusCodes.OK).send(responseGenerators(removeFields(songExist, ['_id', '__v']), StatusCodes.OK, SONGS.CREATED, false));
   }
 
   @Get()
