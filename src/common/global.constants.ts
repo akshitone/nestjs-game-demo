@@ -21,3 +21,10 @@ export const MODULES = {
   CUSTOMER: 'Customer',
   USER: 'User',
 };
+
+export const ERROR = {
+  UNAUTHORIZED: 'Unauthorized access, Please provide valid token',
+  EXPIRED: 'Unauthorized access, Token expired',
+  INVALID: 'Unauthorized access, Invalid token',
+  INTERNAL_SERVER_ERROR: 'Internal server error',
+};

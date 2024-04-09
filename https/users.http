@@ -12,6 +12,7 @@ Content-Type: application/json
 
 ### FETCH ALL USERS
 GET http://localhost:3000/api/users
+Authorization: 123
 
 ### FETCH SINGLE USER
 GET http://localhost:3000/api/users/ad2ac97c-a643-43b8-bf09-324d19041935
