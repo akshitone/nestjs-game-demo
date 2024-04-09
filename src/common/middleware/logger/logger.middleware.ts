@@ -1,4 +1,4 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { ConsoleLogger, Injectable, LogLevel, NestMiddleware } from '@nestjs/common';
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
@@ -19,3 +19,27 @@ export class LoggerMiddleware implements NestMiddleware {
     next();
   }
 }
+
+export class MyLogger extends ConsoleLogger {
+  error(message: string): void {
+    super.error(message);
+  }
+
+  log(message: string): void {
+    super.log(message);
+  }
+
+  warn(message: string): void {
+    super.warn(message);
+  }
+
+  debug(message: string): void {
+    super.debug(message);
+  }
+
+  fatal(message: string): void {
+    super.fatal(message);
+  }
+}
+
+export const logger = new MyLogger();

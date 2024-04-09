@@ -5,6 +5,7 @@ import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
 import { CustomersModule } from './modules/customers/customers.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './modules/users/users.module';
+import { AuthMiddleware } from './common/middleware/auth/auth.middleware';
 
 configDotenv();
 
@@ -15,6 +16,6 @@ configDotenv();
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('*'); // for all routes
+    consumer.apply(LoggerMiddleware, AuthMiddleware).forRoutes('*'); // for all routes
   }
 }
