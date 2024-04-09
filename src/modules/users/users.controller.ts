@@ -1,17 +1,17 @@
 import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { FastifyReply, FastifyRequest } from 'fastify';
 import { StatusCodes } from 'http-status-codes';
 import { generateHashPassword, generatePublicId, responseGenerators } from 'src/common/common.functions';
 import { USERS } from 'src/common/global.constants';
 import { UserCreateDTO } from 'src/dto/users.dto';
+import { Response } from 'express';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async createUser(@Body() userCreateDTO: UserCreateDTO, @Req() req: FastifyRequest, @Res() res: FastifyReply) {
+  async createUser(@Body() userCreateDTO: UserCreateDTO, @Res() res: Response) {
     const userId = generatePublicId();
     const { firstName, lastName, userName, password, dateOfBirth } = userCreateDTO;
 
@@ -23,14 +23,14 @@ export class UsersController {
   }
 
   @Get()
-  async findUsers(@Req() req: FastifyRequest, @Res() res: FastifyReply) {
+  async findUsers(@Res() res: Response) {
     const usersExist = await this.usersService.findAll();
 
     return res.status(StatusCodes.OK).send(responseGenerators(usersExist, StatusCodes.OK, USERS.FOUND, false));
   }
 
   @Get('/:userId')
-  async findUser(@Param('userId') userId: string, @Req() req: FastifyRequest, @Res() res: FastifyReply) {
+  async findUser(@Param('userId') userId: string, @Res() res: Response) {
     const userExist = await this.usersService.findOne(userId);
 
     return res.status(StatusCodes.OK).send(responseGenerators(userExist, StatusCodes.OK, USERS.FOUND, false));
