@@ -10,7 +10,7 @@ export interface ILog {
   fullUrl: string;
   requestIp: string;
   statusCode: number;
-  requestBody: object;
+  requestBody: object | unknown;
   responseBody: object;
   createdAt: string;
 }

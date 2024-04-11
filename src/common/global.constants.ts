@@ -30,3 +30,13 @@ export const ERROR = {
   INTERNAL_SERVER_ERROR: 'Internal server error',
   SOMETHING_WENT_WRONG: 'Something went wrong',
 };
+
+export const LOGGER_CONFIG = {
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      translateTime: 'dd-mm-yyyy HH:MM:ss Z',
+      ignore: 'pid,hostname',
+    },
+  },
+};

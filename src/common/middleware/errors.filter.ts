@@ -1,7 +1,7 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException } from '@nestjs/common';
-import { Request, Response } from 'express';
 import { generatePublicId, responseGenerators, setTimesTamp } from '../common.functions';
 import { LogsService } from 'src/modules/logs/logs.service';
+import { FastifyReply, FastifyRequest } from 'fastify';
 
 @Catch()
 export class ErrorsFilter implements ExceptionFilter {
@@ -9,8 +9,8 @@ export class ErrorsFilter implements ExceptionFilter {
 
   async catch(exception: HttpException, host: ArgumentsHost) {
     const context = host.switchToHttp();
-    const request = context.getRequest<Request>();
-    const response = context.getResponse<Response>();
+    const request = context.getRequest<FastifyRequest>();
+    const response = context.getResponse<FastifyReply>();
 
     await this.logsService.create({
       logId: generatePublicId(),
