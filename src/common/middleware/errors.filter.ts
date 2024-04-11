@@ -1,8 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { StatusCodes } from 'http-status-codes';
 import { generatePublicId, responseGenerators, setTimesTamp } from '../common.functions';
-import { ERROR } from '../global.constants';
 import { LogsService } from 'src/modules/logs/logs.service';
 
 @Catch()

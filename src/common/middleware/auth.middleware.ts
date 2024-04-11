@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { responseGenerators } from 'src/common/common.functions';
 import { ERROR } from 'src/common/global.constants';
-import { logger } from '../logger/logger.middleware';
+import { logger } from './logger.middleware';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {

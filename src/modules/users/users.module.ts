@@ -3,7 +3,7 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MODULES } from 'src/common/global.constants';
-import { UserSchema } from 'src/models/users.model';
+import { UserSchema } from './users.model';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: MODULES.USER, schema: UserSchema }])],
