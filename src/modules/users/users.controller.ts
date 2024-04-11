@@ -1,10 +1,11 @@
-import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, Post, Req, Res } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { StatusCodes } from 'http-status-codes';
 import { generateHashPassword, generatePublicId, responseGenerators } from 'src/common/common.functions';
 import { USERS } from 'src/common/global.constants';
 import { UserCreateDTO } from 'src/dto/users.dto';
 import { Response } from 'express';
+import { NotFoundError } from 'rxjs';
 
 @Controller('users')
 export class UsersController {

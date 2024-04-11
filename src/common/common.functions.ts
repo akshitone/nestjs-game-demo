@@ -1,8 +1,20 @@
+import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
+import * as duration from 'dayjs/plugin/duration';
+import * as timezone from 'dayjs/plugin/timezone';
 import { v4 as uuidv4 } from 'uuid';
 const bcrypt = require('bcrypt');
 
+dayjs.extend(utc);
+dayjs.extend(duration);
+dayjs.extend(timezone);
+
 export const generatePublicId = () => {
   return uuidv4();
+};
+
+export const setTimesTamp = () => {
+  return dayjs().unix();
 };
 
 export const generateHashPassword = (password: string) => {
@@ -28,13 +40,13 @@ export function responseGenerators(
 ) {
   const responseJson: any = {};
   responseJson.data = responseData;
-  responseJson.status_code = responseStatusCode;
-  responseJson.status_message = responseStatusMsg;
+  responseJson.statusCode = responseStatusCode;
+  responseJson.message = responseStatusMsg;
 
   if (responseErrors === undefined) {
-    responseJson.response_error = [];
+    responseJson.responseError = [];
   } else {
-    responseJson.response_error = responseErrors;
+    responseJson.responseError = responseErrors;
   }
 
   if (token !== undefined && refreshToken !== undefined) {

@@ -20,6 +20,7 @@ export const MODULES = {
   SONG: 'Song',
   CUSTOMER: 'Customer',
   USER: 'User',
+  LOG: 'Log',
 };
 
 export const ERROR = {
@@ -27,4 +28,5 @@ export const ERROR = {
   EXPIRED: 'Unauthorized access, Token expired',
   INVALID: 'Unauthorized access, Invalid token',
   INTERNAL_SERVER_ERROR: 'Internal server error',
+  SOMETHING_WENT_WRONG: 'Something went wrong',
 };
